@@ -6,11 +6,13 @@ h1 {
   font-family: Raleway;
   color: #34495e;
 }
+
 .container {
   display: flex;
   justify-content: center;
 }
 
+/* item contains the div, image and icon(i)*/
 div.item {
   position: relative;
   float: left;
@@ -23,6 +25,7 @@ div.item {
   text-align: center;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
 }
+
 
 div.item * {
   box-sizing: border-box;

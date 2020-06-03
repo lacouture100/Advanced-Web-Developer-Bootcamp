@@ -1,0 +1,80 @@
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+@import url('https://fonts.googleapis.com/css?family=Raleway:200');
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: rgb(59, 59, 59);
+}
+main > *, header, footer {
+  margin: 4px;
+  padding: 5px;
+  border-radius: 7px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1abc9c;
+  flex-basis: 100px;
+}
+
+main {
+  display: flex;
+  flex-basis: 800px;
+}
+
+nav{
+  background-color: rgb(197, 197, 197);
+  order: 0;
+  flex: 1 1 20%;
+
+}
+
+article {
+  order: 1;
+  flex: 4 0 60%;
+}
+
+aside {
+  background-color: rgb(105, 177, 211);
+  order: 2;
+  flex: 1 1 20%;
+
+}
+
+footer {
+  display: flex;
+  justify-content: flex-start;
+  flex-basis: 10vw;
+  background: #1abc9c;
+  flex-basis: 100px;
+}
+
+@media screen and (max-width: 640px) {
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+  nav{
+    order: 1;
+    flex-basis: 20vw;
+  }
+  
+  article {
+    order: 0;
+    flex-basis: 60vw;
+    flex-basis: 640px;
+  }
+  
+  aside {
+    order: 2;
+    flex-basis: 20vw;
+  }
+  
+
+}
+
