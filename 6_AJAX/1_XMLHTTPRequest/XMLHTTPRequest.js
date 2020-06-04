@@ -7,7 +7,7 @@ XHR.onreadystatechange = function() {
     //Log every state change
     console.log(`READY STATE CHANGE IS...${XHR.readyState}`);
     //When the XHR state is DONE
-    if(XHR.readyState ===4){
+    if(XHR.readyState == 4){
         //Check if the request went through
         if(XHR.status == 200){
             console.log('REQUEST WENT THROUGH');
