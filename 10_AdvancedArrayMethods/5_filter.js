@@ -1,23 +1,18 @@
-function doubleValues(arr){
-    return arr.map(function(val){
-        return val * 2
-    });
+function filter(arr, callback) {
+  var newArr;
+  for (var i = 0; i < arr.length; i++) {
+      newArr.push(callback(arr[i], i, arr))
   }
-  
-  function valTimesIndex(arr){
-    return arr.map(function(val,idx){
-        return val*idx;
-    })
-  }
-  
-  function extractValue(arr,key){
-    return arr.map(function(val){
-        return val[key];
-    });
-  }
-  
-  function extractFullName(arr){
-    return arr.map(function(val){
-      return val.first + " " + val.last;
-    });
-  }
+  return newArr;
+}
+
+arr.filter(function(value,index,array){
+  return value>2;
+})
+
+function divisibleByThree(arr){
+  return arr.filter(function(value){
+    return value %3 ===0;
+  })
+}
+
