@@ -58,7 +58,6 @@ function guessingGame(amount) {
             return strings[3];
         }
         return strings[4];
-
     }
    
 }
