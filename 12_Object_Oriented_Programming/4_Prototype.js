@@ -1,23 +1,25 @@
-// PART 1
+//Useful but inneficient code
 
-// Create a constructor function for a Person, each person should have a firstName, lastName, favoriteColor and favoriteNumber. Your function MUST be named Person. 
-
-// Write a method called multiplyFavoriteNumber that takes in a number and returns the product of the number and the object created from the Person functions' favorite number.
-
-// PART 2
-
-// Given the following code - refactor the Child function to remove all the duplication from the Parent function. You should be able to remove 4 lines of code in the Child function and replace it with 1 single line.
-
-function Parent(firstName, lastName, favoriteColor, favoriteFood){
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.favoriteColor = favoriteColor;
-    this.favoriteFood = favoriteFood;
+function Person(name){
+    this.name = name;
+    this.sayHi = function(){
+        return `Hi ${this.name}`;
+    };
 }
 
-function Child(firstName, lastName, favoriteColor, favoriteFood){
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.favoriteColor = favoriteColor;
-    this.favoriteFood = favoriteFood;
+var alvaro  = new Person('Alvaro');
+alvaro.sayHi()
+
+///////////////////////
+
+
+function Person(name){
+    this.name = name;
 }
+
+Person.prototype.sayHi = function(){
+    return `Hi ${this.name}`;
+};
+
+var alvaro  = new Person('Alvaro');
+alvaro.sayHi()

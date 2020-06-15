@@ -35,16 +35,17 @@ function Person(firstName,lastName,favoriteColor,favoriteNumber){
     this.favoriteColor = favoriteColor;
     this.favoriteNumber = favoriteNumber;
     this.family = [];
-};
+}
 
 Person.prototype.fullName = function(){
     return this.firstName + ' ' + this.lastName;
 };
-Person.prototype.addToFamily = function(object){
-    if ( object instanceof Person){
+Person.prototype.addToFamily = function(person){
+    // the -1 index is to check that the person isn't already in the array
+    if ( this.family.indexOf(person) === -1 && person instanceof Person){
         this.family.push(object);
     }
-    return this.family.length();
+    return this.family.length;
 };
 
 
@@ -60,14 +61,16 @@ Examples:
     "tacocat".reverse() // "tacocat"
 */
 
-Array.prototype.map = function(arr, callback){
+Array.prototype.map = function(callback){
     var newArr;
-    for (var i = 0; i < this.arr.length; i++) {
-        newArr.push(this.callback(this.arr[i], i, this.arr));
+    for (var i = 0; i < this.length; i++) {
+        newArr.push(callback(this[i], i, this));
     }
     return newArr;
 };
 String.prototype.reverse = function(string){
-    var newString = this.string.reverse();
-    return newString;
+    var newStr = '';
+    for(var i = this.length - 1; i >= 0 ; i--){
+        newStr == this[i];
+    }
 };
