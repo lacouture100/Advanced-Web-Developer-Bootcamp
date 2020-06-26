@@ -8,3 +8,11 @@ d3.select('#page-title')
     .attr("class", "new-class")
     .text("D3 is cool!")
     .classed("class", false)
+
+
+    // Chain multiple D3 selectors
+
+d3.select(".outer")
+.style("color", "purple")
+.select("inner")
+.style("font-size", "30");
