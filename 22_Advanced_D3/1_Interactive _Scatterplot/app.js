@@ -94,32 +94,13 @@ d3.select("svg")
             .attr("cy", d => yScale(d.lifeExpectancy))
             .attr("fill", d => colorScale(d.population / d.area))
             .attr("r", d => radiusScale(d.births))
-            //Make the tooltip appear
-            .on("mousemove", d =>{
-                tooltip
-                    // Make tooltip visible when mouse is on top
-                    .style("opacity", 1)
-                    // Set the x position to the mouse's current position + half the width of the tooltip div
-                    .style("left", d3.event.x - (tooltip.node().offsetWidth/2) + "px")
-                    // Set the x position to the mouse's current position
-                    .style("top", d3.event.y + 25 + "px")
-                    .html(`
-                    <p> Region: ${d.region} </p> 
-                    <p> Births: ${d.births} </p> 
-                    <p> Population: ${d.population} </p> 
-                    <p> Area: ${d.area} </p>  
-                    <p> Life Expectancy: ${d.lifeExpectancy} </p> 
-                    `)
-            })
-            .on("mouseout", d =>{
-                tooltip
-                    //dissapear tooltip when mouse is no longer over
-                    .style("opacity", 0)
-                    // Set the x position to the mouse's current position
-                    .style("left", d3.event.x + "px")
-                    // Set the x position to the mouse's current position
-                    .style("top", d3.event.y + "px")
-            })
+            //Make the tooltip appear when we hover with the mouse or touch the screen
+            .on("mousemove", showTooltip)
+            .on("touchstart", showTooltip)
+
+            //Make the tooltip disappear 
+            .on("mouseout", hideTooltip)
+            .on("touchend", hideTooltip)
             
 
 //Create the Title for each axis
@@ -154,3 +135,33 @@ d3.select("svg")
                 .attr("dy", "-1.1em")
                 .style("text-anchor", "middle")
                 .text("Life Expectancy");
+
+
+function showTooltip(d){
+        tooltip
+            // Make tooltip visible when mouse is on top
+            .style("opacity", 1)
+            // Set the x position to the mouse's current position + half the width of the tooltip div
+            .style("left", d3.event.x - (tooltip.node().offsetWidth/2) + "px")
+            // Set the x position to the mouse's current position
+            .style("top", d3.event.y + 25 + "px")
+            .html(`
+            <p> Region: ${d.region} </p> 
+            <p> Births: ${d.births} </p> 
+            <p> Population: ${d.population} </p> 
+            <p> Area: ${d.area} </p>  
+            <p> Life Expectancy: ${d.lifeExpectancy} </p> 
+            `)
+    
+}
+
+function hideTooltip(d){
+        tooltip
+            //dissapear tooltip when mouse is no longer over
+            .style("opacity", 0)
+            // Set the x position to the mouse's current position
+            .style("left", d3.event.x + "px")
+            // Set the x position to the mouse's current position
+            .style("top", d3.event.y + "px")
+    }
+}
