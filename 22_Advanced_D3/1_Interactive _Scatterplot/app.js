@@ -163,5 +163,5 @@ function hideTooltip(d){
             .style("left", d3.event.x + "px")
             // Set the x position to the mouse's current position
             .style("top", d3.event.y + "px")
-    }
+    
 }

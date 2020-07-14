@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Component 1</title>
+    <!-- Import REACT, REACT-DOM, -->
+    <script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/react-dom-factories@1.0.0/index.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="text/javascript">
+  class Pet extends React.Component {
+    render() {
+      //create the elements to render
+      // Create t
+      const h2 = ReactDOMFactories.h2(null, "A doggo")
+      const img = ReactDOMFactories.img({
+        src:'https://images.dog.ceo/breeds/setter-english/n02100735_3599.jpg',
+        alt: 'A Random cute doggo'
+      });
+      //  No attributes(null), first we put the h2 and then the image
+      return ReactDOMFactories.div(null, h2, img)
+    }
+  }
+  // Create the Pet element and render it into the app <div>
+  ReactDOM.render(React.createElement(Pet), document.getElementById("app"))
+  </script>
+</body>
+</html>

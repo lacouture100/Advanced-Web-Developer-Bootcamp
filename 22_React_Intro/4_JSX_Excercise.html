@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Random Box Component</title>
+  <link rel="stylesheet" href="Babel_first-component.css">
+  </link>
+
+  <script src="https://unpkg.com/react@16.0.0-rc.2/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.0.0-rc.2/umd/react-dom.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="text/babel">
+    class RandomBox extends React.Component {
+      render() {
+        var colors = ['Blue', 'Red', 'Yellow' , 'White', 'Black']
+        //create the inline style for the list elements as a JS object
+        var bgColor= colors[Math.floor(Math.random() * 3)];
+        var fontColor= colors[Math.floor(Math.random() * 3)];
+        var fontSize = Math.floor(Math.random() * 5);
+
+        var randomStyleDiv = {fontSize: `${fontSize}em`,
+                              backgroundColor: bgColor,
+                              color: fontColor,
+                              display:'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              height: '200px',
+                              width: '300px'};
+        return (
+  
+          <div style={randomStyleDiv}>
+            Random Box
+          </div>
+        );
+      }
+    }
+    // We can close with />
+    ReactDOM.render(<RandomBox />, document.getElementById("app"));
+  </script>
+</body>
+
+</html>
