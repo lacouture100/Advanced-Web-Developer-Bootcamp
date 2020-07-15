@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import './Recipe.css'
+import PropTypes from 'prop-types'
 
 class Recipe extends Component{
+
+    static propTypes ={
+        title: PropTypes.string.isRequired,
+        img: PropTypes.string.isRequired,
+        instruction: PropTypes.string.isRequired,
+        ingredients: PropTypes.arrayOf(PropTypes.string).isRequired
+    }
     render(){
         //When putting this.props only it assumes the name will be the name of the varaible given.
         //Its a shorthand
