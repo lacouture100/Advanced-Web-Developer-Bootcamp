@@ -1,6 +1,48 @@
 import React, { Component } from 'react';
 import './App.css';
+import PropTypes from 'prop-types'
 
+
+/*
+// Child component
+
+class InstructorItem extends Component {
+  static propTypes = {
+    name : PropTypes.string,
+    hobbies: PropTypes.arrayOf(PropTypes.string)
+  }
+  render(){
+    return(
+      <li >
+        <h3>{this.props.name}</h3>
+        <h4>Hobbies: {this.props.hobbies.join(",")}</h4>
+      </li>
+    );
+  }
+}
+*/
+// REFACTORED AS A STATELESS FUNCTIONAL COMPONENT
+
+//always gets props as a parameter
+const InstructorItem = props => {
+  //implicit render method
+    return(
+      <li >
+        {/*No need for this.props.name since we are not extending from component
+           here props refers directly to our function*/}
+        <h3>{props.name}</h3>
+        <h4>Hobbies: {props.hobbies.join(",")}</h4>
+      </li>
+    );
+}
+
+//Decalr the proptypes outside of the component
+InstructorItem.propTypes = {
+  name : PropTypes.string,
+  hobbies: PropTypes.arrayOf(PropTypes.string)
+}
+
+// Main component
 class App extends Component {
   constructor(props) {
     super(props);
@@ -53,10 +95,11 @@ class App extends Component {
 
   render() {
     const instructors = this.state.instructors.map((instructor, index) => (
-      <li key={index}>
-        <h3>{instructor.name}</h3>
-        <h4>Hobbies: {instructor.hobbies.join(", ")}</h4>
-      </li>
+      <InstructorItem 
+      key={index}
+      name={instructor.name}
+      hobbies={instructor.hobbies}
+      />
     ));
     return (
       <div className="App">
