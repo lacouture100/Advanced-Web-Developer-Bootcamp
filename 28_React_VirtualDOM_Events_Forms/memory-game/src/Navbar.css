@@ -1,0 +1,12 @@
+.navbar{
+    display: flex ;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: aquamarine;
+    width: 100%;
+    min-width: 720px;
+}
+
+h2 {
+    margin: 20px;
+}
