@@ -1,0 +1,50 @@
+import React, { Component } from 'react';
+import './TodoList.css';
+
+const APIURL = `/api/todos`;
+
+export default class TodoList extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      todos: []
+    }
+
+    this.loadTodos = this.loadTodos.bind(this);
+  }
+  componentDidMount(){
+    this.loadTodos();
+  }
+
+  loadTodos(){
+    fetch(APIURL)
+     // .then(console.log('Hello'))
+     .then(response => {
+       if(!response.ok){
+         if(response.status >= 400 && response.status <= 500){
+           return response.json()
+           .then(data => {
+             let error = {errorMessage : data.message}
+             throw error;
+           })
+         } else {
+           // If there is no response / The server is off
+           let error = {errorMessage : 'Please try again later'};
+           throw error;
+         }
+
+       }
+       return response.json()
+      
+     })
+    .then(todos => this.setState({todos : todos}))
+     
+  }
+    render(){
+      return(
+        <div>
+        <h1> Todo List</h1>
+        </div>
+      )
+    }
+}
